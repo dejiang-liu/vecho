@@ -1,24 +1,23 @@
 <template>
-  <ul class="list">
-      <li class="list-item" v-for="item in json" :key="item.sound.id">
-          <router-link class="item-link" :to="{ path:'detail',query:{'id':item.sound.id}}">
-              <!-- 图片 -->
-              <div class="time-image-container">
-                  <img class="item-image" :src="item.sound.pic_500">
-                  <div class="my-icon-hot item-fire" v-if='item.sound.is_hot' :class="item.sound.is_hot | botClass"></div>
-              </div>
-              <!-- 名字 -->
-              <div class="item-name">{{ item.sound.name }}</div>
-          </router-link>
-          <!-- 频道 -->
-          <div class="item-channel">
-              <a class="item-channel-value">{{ item.sound.channel.name }}</a>
-              <div class="item-channel-label">频道</div>
-          </div>
-      </li>
-  </ul>
+    <ul class="list">
+        <li class="list-item" v-for="item in json" :key="item.sound.id">
+            <router-link class="item-link" :to="{ path: 'detail', query: { 'id': item.sound.id } }">
+                <!-- 图片 -->
+                <div class="item-image-container">
+                    <img class="item-image" :src="item.sound.pic_500">
+                    <div class="my-icon-hot item-fire" v-if='item.sound.is_hot' :class='item.sound.is_hot | hotClass'></div>
+                </div>
+                <!-- 名字 -->
+                <div class="item-name">{{item.sound.name}}</div>
+            </router-link>
+            <!-- 频道 -->
+            <div class="item-channel">
+                <a class="item-channel-value">{{item.sound.channel.name}}</a>
+                <div class="item-channel-label">频道</div>
+            </div>
+        </li>
+    </ul>
 </template>
-
 <script>
 export default {
     props: {
@@ -30,7 +29,6 @@ export default {
     }
 }
 </script>
-
 <style lang='stylus' scoped>
 $imageHeight = toRem(175);
 .list {

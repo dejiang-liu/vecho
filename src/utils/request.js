@@ -6,20 +6,20 @@ export const instance = axios.create({
     timeout: 20 * 1000
 })
 
-//request
+// request
 instance.interceptors.request.use(config => {
     return config
 }, error => {
     Promise.reject(error)
 })
 
-//response
+// response
 instance.interceptors.response.use(response => {
     const res = response.data
-    //根据返回信息，可自定义一些报错规则
+    // 根据返回信息，可自定义一些报错规则
     return Promise.resolve(res)
 }, error => {
-    //输出错误信息
+    // 输出错误信息
     Toast(error.message)
     return Promise.reject(error)
 })
@@ -38,16 +38,16 @@ export const request = async (url = '', type = 'GET', data = {}, isForm = false)
         method: type,
         url: url
     }
-    if(isForm) {
+    if (isForm) {
         let form = new FormData()
         Object.keys(data).forEach(key => {
             let value = data[key]
-            if(Array.isArray(value)){
+            if (Array.isArray(value)) {
                 value.forEach(item => {
-                    form.append(key,item)
+                    form.append(key, item)
                 })
-            }else {
-                form.append(key,data[key])
+            } else {
+                form.append(key, data[key])
             }
         })
         data = form
@@ -55,9 +55,9 @@ export const request = async (url = '', type = 'GET', data = {}, isForm = false)
     requestOptions['headers'] = {
         'Content-type': isForm ? 'multipart/form-data' : 'application/json'
     }
-    if(type === 'GET') {
+    if (type === 'GET') {
         requestOptions['params'] = data
-    }else {
+    } else {
         requestOptions['data'] = data
     }
     await instance(requestOptions).then(res => {

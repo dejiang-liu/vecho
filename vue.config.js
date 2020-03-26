@@ -18,7 +18,7 @@ module.exports = {
         }
     },
     devServer: {
-        port: 8005,
+        port: 8002,
         open: true
     },
     configureWebpack: {

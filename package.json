@@ -13,6 +13,7 @@
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.6.4",
     "mint-ui": "^2.2.13",
+    "mockjs": "^1.1.0",
     "vue": "^2.6.11",
     "vue-progressbar": "^0.7.5",
     "vue-router": "^3.1.5",
@@ -51,7 +52,12 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "indent": [
+        2,
+        4
+      ]
+    }
   },
   "browserslist": [
     "> 1%",
